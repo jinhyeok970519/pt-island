@@ -98,17 +98,17 @@
             idx++;
         });
 
-        for (var i=0; i < _openingIslandIdx.length; i++) {
-            let tmp = nearTime[_openingIslandIdx[i]];
-            nearTime.splice(_openingIslandIdx[i], 1);
-            nearTime.unshift(tmp);
-        }
+        // for (var i=0; i < _openingIslandIdx.length; i++) {
+        //     let tmp = nearTime[_openingIslandIdx[i]];
+        //     nearTime.splice(_openingIslandIdx[i], 1);
+        //     nearTime.unshift(tmp);
+        // }
 
-        let _islandData = [];
-        for (var i=0; i < nearTime.length; i++) {
-            _islandData.push(islandData[nearTime[i].idx]);
-        }
-        islandData = _islandData;
+        // let _islandData = [];
+        // for (var i=0; i < nearTime.length; i++) {
+        //     _islandData.push(islandData[nearTime[i].idx]);
+        // }
+        // islandData = _islandData;
     }
 
     function createCard(islandName, img, remainingTime, reward, nextRemainingTime, isOpening) 
