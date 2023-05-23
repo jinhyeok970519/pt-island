@@ -87,16 +87,16 @@
             if(a.remainingTime < b.remainingTime) return -1;
         });
 
-        openingIslandIdx = [...new Set(openingIslandIdx)];
-        _openingIslandIdx = [];
+        // openingIslandIdx = [...new Set(openingIslandIdx)];
+        // _openingIslandIdx = [];
 
-        let idx = 0;
-        nearTime.forEach(function(data) {            
-            for (var i=0; i < openingIslandIdx.length; i++) {
-                if (data.idx === openingIslandIdx[i]) _openingIslandIdx.push(idx);
-            }            
-            idx++;
-        });
+        // let idx = 0;
+        // nearTime.forEach(function(data) {            
+        //     for (var i=0; i < openingIslandIdx.length; i++) {
+        //         if (data.idx === openingIslandIdx[i]) _openingIslandIdx.push(idx);
+        //     }            
+        //     idx++;
+        // });
 
         // for (var i=0; i < _openingIslandIdx.length; i++) {
         //     let tmp = nearTime[_openingIslandIdx[i]];
