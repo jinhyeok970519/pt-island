@@ -60,6 +60,7 @@
                     if (cnt == 1) break;
                 }
                 else {
+                    isTodayIsland = false;
                     let pastTime = parseInt((Math.abs(remainingTime) % 3600));
                     if (pastTime < 180) {
                         isOpening = true;
@@ -74,7 +75,7 @@
                 islandOpenTime.setDate(islandOpenTime.getDate() + 1);
                 remainingTime = (islandOpenTime.getTime() - now.getTime()) / 1000;
 
-                createCard(islandData[i].islandName, islandData[i].img, timeConversion(remainingTime), null, timeConversion(nextRemainingTime));
+                createCard(islandData[i].islandName, islandData[i].img, timeConversion(remainingTime), islandData[i].reward, timeConversion(nextRemainingTime), isOpening);
             }
 
             // 남은시간 순으로 정렬하기 위한 배열 생성
@@ -87,28 +88,28 @@
             if(a.remainingTime < b.remainingTime) return -1;
         });
 
-        // openingIslandIdx = [...new Set(openingIslandIdx)];
-        // _openingIslandIdx = [];
+        openingIslandIdx = [...new Set(openingIslandIdx)];
+        _openingIslandIdx = [];
 
-        // let idx = 0;
-        // nearTime.forEach(function(data) {            
-        //     for (var i=0; i < openingIslandIdx.length; i++) {
-        //         if (data.idx === openingIslandIdx[i]) _openingIslandIdx.push(idx);
-        //     }            
-        //     idx++;
-        // });
+        let idx = 0;
+        nearTime.forEach(function(data) {            
+            for (var i=0; i < openingIslandIdx.length; i++) {
+                if (data.idx === openingIslandIdx[i]) _openingIslandIdx.push(idx);
+            }            
+            idx++;
+        });
 
-        // for (var i=0; i < _openingIslandIdx.length; i++) {
-        //     let tmp = nearTime[_openingIslandIdx[i]];
-        //     nearTime.splice(_openingIslandIdx[i], 1);
-        //     nearTime.unshift(tmp);
-        // }
+        for (var i=0; i < _openingIslandIdx.length; i++) {
+            let tmp = nearTime[_openingIslandIdx[i]];
+            nearTime.splice(_openingIslandIdx[i], 1);
+            nearTime.unshift(tmp);
+        }
 
-        // let _islandData = [];
-        // for (var i=0; i < nearTime.length; i++) {
-        //     _islandData.push(islandData[nearTime[i].idx]);
-        // }
-        // islandData = _islandData;
+        let _islandData = [];
+        for (var i=0; i < nearTime.length; i++) {
+            _islandData.push(islandData[nearTime[i].idx]);
+        }
+        islandData = _islandData;
     }
 
     function createCard(islandName, img, remainingTime, reward, nextRemainingTime, isOpening) 
